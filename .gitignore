@@ -1,0 +1,10 @@
+cm_portal.egg-info/
+build/
+dist/
+__pycache__
+*.pyc
+*~
+manage.py
+mysite
+media
+db.sqlite3
