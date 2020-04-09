@@ -11,3 +11,6 @@ class Resident(models.Model):
 
     def get_absolute_url(self):
         return reverse('resident-detail', args=[str(self.id)])
+
+    class Meta:
+        ordering = ['last_name']

@@ -1,11 +1,9 @@
 {% extends "point_of_care/base.html" %}
 
-{% block content %}
-  <h1>Point of Care</h1>
-  <p>Welcome to Point of Care, a web application developed by <em>Camillus MedHaven</em>!</p>
+{% block content %}  
   <h2>Dynamic content</h2>
   <p>The database has the following record counts:</p>
   <ul>
-    <li><strong>Residents:</strong> {{ num_residents }}</li>    
+    <a href="{% url 'residents' %}"><strong>Residents:</strong> {{ num_residents }}</a>    
   </ul>
 {% endblock %}
