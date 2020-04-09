@@ -6,15 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="web_author" content="Ryan D. Salvador" />
     <meta name="description" content="Point of Care web app for quality patient care" />
-    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/united/bootstrap.min.css" rel="stylesheet" integrity="sha384-bzjLLgZOhgXbSvSc5A9LWWo/mSIYf7U7nFbmYIB2Lgmuiw3vKGJuu+abKoaTx4W6" crossorigin="anonymous">    
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.4.1/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-R/oa7KS0iDoHwdh4Gyl3/fU7pgvSCt7oyuQ79pkw+e+bMWD9dzJJa+Zqd+XJS0AD" crossorigin="anonymous">    
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   </head>
-  <body>
-    <h1>Point of Care</h1>
+  <body>    
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+          {% block sidebar %}
+            <ul class="sidebar-nav">             
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'residents' %}">All residents</a></li>
+              <br>              
+              {% if user.is_authenticated %}
+                <li>User: {{ user.get_username }}</li>                
+                <li><a href="{% url 'logout'%}?next={{request.path}}">Logout</a></li> 
+              {% endif %}              
+            </ul>
+          {% endblock %}
+        </div>
+        <div class="col-sm-10 ">
+          <h1><a href="{% url 'index' %}">Point of Care</a></h1>
     <p>Welcome to Point of Care, a web application developed by <em>Camillus MedHaven</em>!</p>
-    {% block sidebar %}<!-- insert default navigation text for every page -->{% endblock %}
-    {% block content %}<!-- default content text (typically empty) -->{% endblock %}
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
   </body>
 </html>

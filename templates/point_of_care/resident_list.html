@@ -1,7 +1,9 @@
 {% extends "point_of_care/base.html" %}
 
+{% block title %}<title>Point of Care | Resident List</title>{% endblock %}
+
 {% block content %}
-  <h1>Resident List</h1>
+  <h2>Resident List</h2>
   {% if resident_list %}
   <ul>
     {% for resident in resident_list %}

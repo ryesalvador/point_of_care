@@ -1,7 +1,9 @@
 {% extends "point_of_care/base.html" %}
 
+{% block title %}<title>Point of Care | Resident Profile</title>{% endblock %}
+
 {% block content %}
-  <h1>{{ resident }}</h1>
+  <h2>Resident Profile</h2>  
   <p><strong>First Name: </strong>{{ resident.first_name }}</p>
   <p><strong>Last Name: </strong>{{ resident.last_name }}</p>
 {% endblock %}
