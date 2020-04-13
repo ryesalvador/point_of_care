@@ -15,6 +15,7 @@
   {% else %}
     <p>There are no residents in the database.</p>
   {% endif %}
+  <a href="{% url 'resident-create' %}" >New Resident</a>
 {% endblock %}
 
 {% block pagination %}

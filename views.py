@@ -3,6 +3,7 @@ from point_of_care.models import Resident
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 # Create your views here.
 @login_required
@@ -19,3 +20,16 @@ class ResidentListView(LoginRequiredMixin, generic.ListView):
 
 class ResidentDetailView( LoginRequiredMixin, generic.DetailView):
     model = Resident
+
+class ResidentCreate(LoginRequiredMixin, generic.CreateView):
+    model = Resident
+    fields = '__all__'
+
+class ResidentUpdate(LoginRequiredMixin, generic.UpdateView):
+    model = Resident
+    fields = '__all__'
+    template_name_suffix = '_update_form'
+
+class ResidentDelete(LoginRequiredMixin, generic.DeleteView):
+    model = Resident
+    success_url = reverse_lazy('residents')
