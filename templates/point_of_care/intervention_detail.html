@@ -1,0 +1,9 @@
+{% extends "point_of_care/base.html" %}
+
+{% block title %}<title>Point of Care | Intervention</title>{% endblock %}
+
+{% block content %}
+  <h2>Intervention</h2>  
+  <div class="jumbotron"><p><strong>Intervention: </strong>{{ intervention.intervention }}</p>
+  <p><strong>Notes: </strong>{{ intervention.notes }}</p></div>  
+{% endblock %}

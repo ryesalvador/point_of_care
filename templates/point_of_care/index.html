@@ -1,9 +1,9 @@
 {% extends "point_of_care/base.html" %}
 
 {% block content %}  
-  <h2>Dynamic content</h2>
-  <p>The database has the following record counts:</p>
+  <h2>Home</h2>
+  <div class="jumbotron"><p>The database has the following record counts:</p>
   <ul>
     <a href="{% url 'residents' %}"><strong>Residents:</strong> {{ num_residents }}</a>    
-  </ul>
+  </ul></div>
 {% endblock %}

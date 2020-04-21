@@ -8,6 +8,8 @@ urlpatterns = [
     path('resident/create/', views.ResidentCreate.as_view(), name='resident-create'),
     path('resident/<int:pk>/update/', views.ResidentUpdate.as_view(), name='resident-update'),
     path('resident/<int:pk>/delete/', views.ResidentDelete.as_view(), name='resident-delete'),
+    path('interventions/', views.InterventionListView.as_view(), name='interventions'),
+    path('intervention/<int:pk>', views.InterventionDetailView.as_view(), name='intervention-detail'),
 ]
 
 urlpatterns += [

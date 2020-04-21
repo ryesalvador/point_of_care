@@ -4,8 +4,8 @@
 
 {% block content %}
   <h2>Resident Profile</h2>  
-  <p><strong>First Name: </strong>{{ resident.first_name }}</p>
+  <div class="jumbotron"><p><strong>First Name: </strong>{{ resident.first_name }}</p>
   <p><strong>Last Name: </strong>{{ resident.last_name }}</p>
   <a href="{% url 'resident-update' resident.id %}" >Edit</a> |
-  <a href="{% url 'resident-delete' resident.id %}" >Delete</a>
+  <a href="{% url 'resident-delete' resident.id %}" >Delete</a></div>
 {% endblock %}

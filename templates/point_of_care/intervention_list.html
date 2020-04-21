@@ -1,21 +1,20 @@
 {% extends "point_of_care/base.html" %}
 
-{% block title %}<title>Point of Care | Resident List</title>{% endblock %}
+{% block title %}<title>Point of Care | Intervention List</title>{% endblock %}
 
 {% block content %}
-  <h2>Resident List</h2>
-  <div class="jumbotron">{% if resident_list %}
+  <h2>Intervention List</h2>
+  <div class="jumbotron">{% if intervention_list %}
   <ul>
-    {% for resident in resident_list %}
+    {% for intervention in intervention_list %}
       <li>
-        <a href="{{ resident.get_absolute_url }}">{{ resident }}</a>
+        <a href="{{ intervention.get_absolute_url }}">{{ intervention }}</a>
       </li>
     {% endfor %}
   </ul>
   {% else %}
-    <p>There are no residents in the database.</p>
-  {% endif %}
-  <a href="{% url 'resident-create' %}" >New Resident</a></div>
+    <p>There are no interventions in the database.</p>
+  {% endif %}</div>  
 {% endblock %}
 
 {% block pagination %}

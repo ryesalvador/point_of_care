@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from point_of_care.models import Resident
+from point_of_care.models import Resident, Intervention
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -33,3 +33,10 @@ class ResidentUpdate(LoginRequiredMixin, generic.UpdateView):
 class ResidentDelete(LoginRequiredMixin, generic.DeleteView):
     model = Resident
     success_url = reverse_lazy('residents')
+
+class InterventionListView(LoginRequiredMixin, generic.ListView):
+    model = Intervention
+    paginate_by = 10
+
+class InterventionDetailView( LoginRequiredMixin, generic.DetailView):
+    model = Intervention
