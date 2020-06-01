@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Resident(models.Model):
@@ -27,3 +28,14 @@ class Intervention(models.Model):
 
     class Meta:
         ordering = ['short_description']
+
+class Log(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    resident = models.ForeignKey('Resident', on_delete=models.CASCADE, null=True)
+    intervention = models.ForeignKey('Intervention', on_delete=models.CASCADE, null=True)
+    date = models.DateField()
+    time = models.TimeField()
+    notes = models.TextField(blank=True)
+
+    def __str__(self):
+        return f'{self.resident}: {self.intervention} - {self.date} {self.time}'

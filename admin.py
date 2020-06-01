@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Resident, Intervention
+from .models import Resident, Intervention, Log
 
 # Register your models here.
 # admin.site.register(Resident)
@@ -13,3 +13,7 @@ class ResidentAdmin(admin.ModelAdmin):
 class InterventionAdmin(admin.ModelAdmin):
     list_display = ('short_description', 'long_description')
     search_fields = ('short_description', 'long_description')
+
+@admin.register(Log)
+class LogAdmin(admin.ModelAdmin):
+    list_display = ('user', 'resident', 'intervention', 'date', 'time')
