@@ -1,10 +1,10 @@
 {% extends "point_of_care/base.html" %}
 
-{% block title %}<title>Point of Care | Delete Resident</title>{% endblock %}
+{% block title %}<title>Point of Care | Delete Intervention</title>{% endblock %}
 
 {% block content %}
-<h2>Delete Resident</h2>
-<div class="jumbotron"><p>Are you sure you want to delete {{ resident.first_name }} {{ resident.last_name }}?</p>
+<h2>Delete Intervention</h2>
+<div class="jumbotron"><p>Are you sure you want to delete <em>{{ intervention }}</em>?</p>
 
 <form action="" method="POST">
   {% csrf_token %}

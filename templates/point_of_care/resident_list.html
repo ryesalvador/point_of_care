@@ -15,7 +15,12 @@
   {% else %}
     <p>There are no residents in the database.</p>
   {% endif %}
-  <a href="{% url 'resident-create' %}" >New Resident</a></div>
+  {% if perms.cm_portal.add_resident %}
+    <a class="btn btn-primary" href="{% url 'resident-create' %}" role="button">Add resident</a>
+  {% else %} 
+    <a class="btn btn-primary disabled" href="#" role="button">Add resident</a>
+  {% endif %}
+  </div>
 {% endblock %}
 
 {% block pagination %}

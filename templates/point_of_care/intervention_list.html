@@ -14,7 +14,13 @@
   </ul>
   {% else %}
     <p>There are no interventions in the database.</p>
-  {% endif %}</div>  
+  {% endif %}
+  {% if perms.cm_portal.add_intervention %}
+    <a class="btn btn-primary" href="{% url 'intervention-create' %}" role="button">Add intervention</a>
+  {% else %} 
+    <a class="btn btn-primary disabled" href="#" role="button">Add intervention</a>
+  {% endif %}
+  </div>  
 {% endblock %}
 
 {% block pagination %}

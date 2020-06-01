@@ -16,14 +16,14 @@ class Resident(models.Model):
         ordering = ['last_name']
 
 class Intervention(models.Model):
-    intervention = models.CharField(max_length=175)
-    notes = models.TextField(blank=True)
+    short_description = models.CharField(max_length=175)
+    long_description = models.TextField(blank=True)
 
     def __str__(self):
-        return f'{self.intervention}'
+        return f'{self.short_description}'
 
     def get_absolute_url(self):
         return reverse('intervention-detail', args=[str(self.id)])
 
     class Meta:
-        ordering = ['intervention']
+        ordering = ['short_description']

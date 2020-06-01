@@ -40,3 +40,16 @@ class InterventionListView(LoginRequiredMixin, generic.ListView):
 
 class InterventionDetailView( LoginRequiredMixin, generic.DetailView):
     model = Intervention
+
+class InterventionCreate(LoginRequiredMixin, generic.CreateView):
+    model = Intervention
+    fields = '__all__'
+
+class InterventionUpdate(LoginRequiredMixin, generic.UpdateView):
+    model = Intervention
+    fields = '__all__'
+    template_name_suffix = '_update_form'
+
+class InterventionDelete(LoginRequiredMixin, generic.DeleteView):
+    model = Intervention
+    success_url = reverse_lazy('interventions')

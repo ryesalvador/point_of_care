@@ -11,5 +11,5 @@ class ResidentAdmin(admin.ModelAdmin):
 
 @admin.register(Intervention)
 class InterventionAdmin(admin.ModelAdmin):
-    list_display = ('intervention', 'notes')
-    search_fields = ('intervention',)
+    list_display = ('short_description', 'long_description')
+    search_fields = ('short_description', 'long_description')

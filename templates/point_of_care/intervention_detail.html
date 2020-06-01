@@ -4,6 +4,17 @@
 
 {% block content %}
   <h2>Intervention</h2>  
-  <div class="jumbotron"><p><strong>Intervention: </strong>{{ intervention.intervention }}</p>
-  <p><strong>Notes: </strong>{{ intervention.notes }}</p></div>  
+  <div class="jumbotron"><p><strong>Short description: </strong>{{ intervention.short_description }}</p>
+  <p><strong>Long description: </strong>{{ intervention.long_description }}</p>
+  {% if perms.cm_portal.change_intervention and perms.cm_portal.delete_intervention %} 
+    <a class="btn btn-primary" href="{% url 'intervention-update' intervention.id %}" role="button">Edit</a>  
+    <a class="btn btn-danger" href="{% url 'intervention-delete' intervention.id %}" role="button">Delete</a>
+  {% elif perms.cm_portal.change_intervention %}
+    <a class="btn btn-primary" href="{% url 'intervention-update' intervention.id %}" role="button">Edit</a>  
+    <a class="btn btn-danger disabled" href="#" role="button">Delete</a>
+  {% else %}
+    <a class="btn btn-primary disabled" href="#" role="button">Edit</a>  
+    <a class="btn btn-danger disabled" href="#" role="button">Delete</a>
+  {% endif %}
+  </div>  
 {% endblock %}
