@@ -1,0 +1,13 @@
+{% extends "point_of_care/base.html" %}
+
+{% block title %}<title>Point of Care | Delete Log</title>{% endblock %}
+
+{% block content %}
+<h2>Delete Log</h2>
+<div class="jumbotron"><p>Are you sure you want to delete <em>{{ log }}</em>?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input class="btn btn-danger" type="submit" action="" value="Yes, delete." />
+</form></div>
+{% endblock %} 

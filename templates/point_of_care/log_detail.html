@@ -1,0 +1,25 @@
+{% extends "point_of_care/base.html" %}
+
+{% block title %}<title>Point of Care | Resident Profile</title>{% endblock %}
+
+{% block content %}
+  <h2>Log</h2>  
+  <div class="jumbotron">
+  <p><strong>Date: </strong>{{ log.date }}</p>
+  <p><strong>Time: </strong>{{ log.time }}</p>  
+  <p><strong>Resident: </strong>{{ log.resident }}</p>
+  <p><strong>Intervention: </strong>{{ log.intervention }}</p>
+  <p><strong>Notes: </strong>{{ log.notes }}</p>
+  <p><strong>Logged by: </strong>{{ user }}</p>  
+  {% if perms.cm_portal.change_log and perms.cm_portal.delete_log %} 
+    <a class="btn btn-primary" href="{% url 'log-update' log.id %}" role="button">Edit</a>  
+    <a class="btn btn-danger" href="{% url 'log-delete' log.id %}" role="button">Delete</a>
+  {% elif perms.cm_portal.change_log %}
+    <a class="btn btn-primary" href="{% url 'log-update' log.id %}" role="button">Edit</a>  
+    <a class="btn btn-danger disabled" href="#" role="button">Delete</a>
+  {% else %}
+    <a class="btn btn-primary disabled" href="#" role="button">Edit</a>  
+    <a class="btn btn-danger disabled" href="#" role="button">Delete</a>
+  {% endif %}
+  </div>
+{% endblock %}

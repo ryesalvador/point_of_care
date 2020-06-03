@@ -13,6 +13,11 @@ urlpatterns = [
     path('intervention/create/', views.InterventionCreate.as_view(), name='intervention-create'),
     path('intervention/<int:pk>/update/', views.InterventionUpdate.as_view(), name='intervention-update'),
     path('intervention/<int:pk>/delete/', views.InterventionDelete.as_view(), name='intervention-delete'),
+    path('logs/', views.LogListView.as_view(), name='logs'),
+    path('log/<int:pk>/', views.LogDetailView.as_view(), name='log-detail'),
+    path('log/create/', views.LogCreate.as_view(), name='log-create'),
+    path('log/<int:pk>/update/', views.LogUpdate.as_view(), name='log-update'),
+    path('log/<int:pk>/delete/', views.LogDelete.as_view(), name='log-delete'),
 ]
 
 urlpatterns += [

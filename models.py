@@ -38,4 +38,7 @@ class Log(models.Model):
     notes = models.TextField(blank=True)
 
     def __str__(self):
-        return f'{self.resident}: {self.intervention} - {self.date} {self.time}'
+        return f'{self.date} {self.time}: {self.resident} - {self.intervention}'
+
+    def get_absolute_url(self):
+        return reverse('log-detail', args=[str(self.id)])

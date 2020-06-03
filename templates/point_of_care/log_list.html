@@ -1,0 +1,42 @@
+{% extends "point_of_care/base.html" %}
+
+{% block title %}<title>Point of Care | Log List</title>{% endblock %}
+
+{% block content %}
+  <h2>Log List</h2>
+  <div class="jumbotron">{% if log_list %}
+  <ul>
+    {% for log in log_list %}
+      <li>
+        <a href="{{ log.get_absolute_url }}">{{ log }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>There are no logs in the database.</p>
+  {% endif %}
+  {% if perms.cm_portal.add_log %}
+    <a class="btn btn-primary" href="{% url 'log-create' %}" role="button">Add log</a>
+  {% else %} 
+    <a class="btn btn-primary disabled" href="#" role="button">Add log</a>
+  {% endif %}  
+  </div>
+{% endblock %}
+
+{% block pagination %}
+  {% if is_paginated %}
+    <div class="pagination">
+      <span class="page-links">
+      {% if page_obj.has_previous %}
+        <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+      {% endif %}
+       <span class="page-current">
+         Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+       </span>
+       {% if page_obj.has_next %}
+         <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a>
+       {% endif %}
+      </span>
+    </div>
+  {% endif %}
+{% endblock %} 
